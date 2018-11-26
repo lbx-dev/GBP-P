@@ -1,0 +1,46 @@
+{
+  "name": "alphapoint-solidity",
+  "version": "1.0.0",
+  "description": "A library for ethereum smart contract development",
+  "files": [
+    "/build/contracts"
+  ],
+  "scripts": {
+    "build": "./node_modules/.bin/truffle compile",
+    "test": "./node_modules/.bin/truffle test",
+    "startGanache": "./scripts/startGanache.sh",
+    "stopGanache": "./scripts/stopGanache.sh",
+    "prepublish": "npm run build",
+    "precommit": "npm test && lint-staged"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alphapoint/alphapoint-solidity.git"
+  },
+  "publishConfig": {
+    "registry": "http://nexus.alphapoint.com:8087/repository/npm-private/"
+  },
+  "author": "AlphaPoint",
+  "license": "UNLICENSED",
+  "homepage": "https://github.com/alphapoint/alphapoint-solidity#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "openzeppelin-solidity": "2.0.0",
+    "truffle": "4.1.14",
+    "bignumber.js": "7.2.1",
+    "ganache-cli": "6.1.8",
+    "husky": "^1.1.2",
+    "lint-staged": "^7.3.0",
+    "prettier": "^1.14.3",
+    "solium": "^1.1.8"
+  },
+  "lint-staged": {
+    "*.sol": [
+      "solium --file"
+    ],
+    "*.{js,json,yml,yaml,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
+}
